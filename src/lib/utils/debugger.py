@@ -79,9 +79,10 @@ class Debugger(object):
       bg * (1 - trans)).astype(np.uint8)
   
   def show_img(self, pause = False, imgId = 'default'):
-    cv2.imshow('{}'.format(imgId), self.imgs[imgId])
-    if pause:
-      cv2.waitKey()
+    # cv2.imshow('{}'.format(imgId), self.imgs[imgId])
+    cv2.imwrite('/content/debug_image/{}.png'.format(imgId), self.imgs[imgId])
+    # if pause:
+      # cv2.waitKey()
   
   def add_blend_img(self, back, fore, img_id='blend', trans=0.7):
     if self.theme == 'white':
