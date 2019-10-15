@@ -120,7 +120,7 @@ class BaseDetector(object):
       decode_time = time.time()
       dec_time += decode_time - forward_time
       
-      if self.opt.debug >= 2:
+      if self.opt.debug >= 2 and False:
         self.debug(debugger, images, dets, output, scale)
       
       dets = self.post_process(dets, meta, scale)
