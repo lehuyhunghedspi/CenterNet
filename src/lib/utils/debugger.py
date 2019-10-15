@@ -80,6 +80,7 @@ class Debugger(object):
   
   def show_img(self, pause = False, imgId = 'default'):
     # cv2.imshow('{}'.format(imgId), self.imgs[imgId])
+    print("show image")
     cv2.imwrite('/content/gdrive/My Drive/debug_image/{}.png'.format(imgId), self.imgs[imgId])
     # if pause:
       # cv2.waitKey()
