@@ -78,7 +78,12 @@ class COCO(data.Dataset):
 
     print('==> initializing coco 2017 {} data.'.format(split))
     self.coco = coco.COCO(self.annot_path)
-    print(self.coco.dataset.keys())
+    print(self.coco.dataset['images'])
+    print(type(self.coco.dataset['images']))
+    print(self.coco.dataset['annotations'])
+    print(type(self.coco.dataset['annotations']))
+    print(self.coco.dataset['categories'])
+    print(type(self.coco.dataset['categories']))
     1/0
     self.images = self.coco.getImgIds()
     print(type(self.images))
