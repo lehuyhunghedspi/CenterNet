@@ -56,6 +56,7 @@ def main(opt):
 
   train_dataset=Dataset(opt, 'train')
   print(train_dataset.__getitem__)
+  1/0
   train_loader = torch.utils.data.DataLoader(
       train_dataset,#Dataset(opt, 'train'),
       batch_size=opt.batch_size, 
