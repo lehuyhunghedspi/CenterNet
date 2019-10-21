@@ -54,8 +54,10 @@ def main(opt):
     val_loader.dataset.run_eval(preds, opt.save_dir)
     return
 
+  train_dataset=Dataset(opt, 'train')
+  print(train_dataset.__getitem__)
   train_loader = torch.utils.data.DataLoader(
-      Dataset(opt, 'train'), 
+      train_dataset,#Dataset(opt, 'train'),
       batch_size=opt.batch_size, 
       shuffle=True,
       num_workers=opt.num_workers,
