@@ -8,6 +8,7 @@ import sys
 
 class opts(object):
   def __init__(self):
+    print("init opt")
     self.parser = argparse.ArgumentParser()
     # basic experiment setting
     self.parser.add_argument('task', default='ctdet',
