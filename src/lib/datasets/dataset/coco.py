@@ -84,9 +84,9 @@ class COCO(data.Dataset):
     print(type(self.coco.dataset['categories']))
     print(self.coco.dataset['images'][0])
 
-    # print(self.coco.dataset['annotations'])
-    #
-    # print(self.coco.dataset['categories'])
+    print(self.coco.dataset['annotations'][0])
+
+    print(self.coco.dataset['categories'][0])
 
     1/0
     self.images = self.coco.getImgIds()
