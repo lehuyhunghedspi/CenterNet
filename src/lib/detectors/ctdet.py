@@ -67,6 +67,7 @@ class CtdetDetector(BaseDetector):
     if len(scores) > self.max_per_image:
       kth = len(scores) - self.max_per_image
       thresh = np.partition(scores, kth)[kth]
+      print(thresh,'thresh')
       for j in range(1, self.num_classes + 1):
         keep_inds = (results[j][:, 4] >= thresh)
         results[j] = results[j][keep_inds]
