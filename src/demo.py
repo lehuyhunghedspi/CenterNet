@@ -48,7 +48,7 @@ def demo(opt):
     for (image_name) in image_names:
       ret = detector.run(image_name)
       print([i for i in ret['results'][1][:,4] if i>0.7])
-      print([ret['results'][1][i] for i in ret['results'][1][:,4] if i>0.7])
+      # print([ret['results'][1][i] for i in ret['results'][1][:,4] if i>0.7])
       time_str = ''
       for stat in time_stats:
         time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
