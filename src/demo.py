@@ -47,7 +47,7 @@ def demo(opt):
     
     for (image_name) in image_names:
       ret = detector.run(image_name)
-      print(ret['results'].keys())
+      print(ret['results'][1]
       time_str = ''
       for stat in time_stats:
         time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
