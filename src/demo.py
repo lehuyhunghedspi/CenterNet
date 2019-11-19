@@ -51,8 +51,8 @@ def demo(opt):
       print([value for i,value in enumerate(ret['results'][1][:,4]) if value>0.7])
       print(np.array([ret['results'][1][i][:4] for i,value in enumerate(ret['results'][1][:,4]) if value>0.7]))
       print(image_name)
+      img=cv2.imread(image_name)
       for bbox in [ret['results'][1][i][:4] for i,value in enumerate(ret['results'][1][:,4]) if value>0.7]:
-        img=cv2.imread(image_name)
         cv2.rectangle(img, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (255,0,0), 2)
         cv2.imwrite("/content/CenterNet/visualize/"+os.path.basename(image_name),img)
       time_str = ''
