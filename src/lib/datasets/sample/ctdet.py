@@ -35,7 +35,7 @@ class CTDetDataset(data.Dataset):
     num_objs = min(len(anns), self.max_objs)
 
     img = cv2.imread(img_path)
-    print(img_path)
+    # print(img_path)
 
     height, width = img.shape[0], img.shape[1]
     c = np.array([img.shape[1] / 2., img.shape[0] / 2.], dtype=np.float32)
