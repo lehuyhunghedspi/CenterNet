@@ -52,9 +52,11 @@ def demo(opt):
       print(np.array([ret['results'][1][i][:4] for i,value in enumerate(ret['results'][1][:,4]) if value>0.3]))
       print(image_name)
       img=cv2.imread(image_name)
-      for bbox in [ret['results'][1][i][:4] for i,value in enumerate(ret['results'][1][:,4]) if value>0.3]:
-        cv2.rectangle(img, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (255,0,0), 2)
-        cv2.imwrite("/content/CenterNet/visualize/"+os.path.basename(image_name),img)
+      with open("/content/drive/My Drive/GR2/visualize_image/results_text/"+os.path.basename(image_name),"w") as f:
+        for bbox in [ret['results'][1][i][:4] for i,value in enumerate(ret['results'][1][:,4]) if value>0.3]:
+          cv2.rectangle(img, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (255,0,0), 2)
+          cv2.imwrite("/content/drive/My Drive/GR2/visualize_image/"+os.path.basename(image_name),img)
+          f.write(str(int(bbox[0]))+','+str( int(bbox[1]))+','+ str(int(bbox[2]))+','+ str(int(bbox[3]))+'\n')
       time_str = ''
       for stat in time_stats:
         time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
