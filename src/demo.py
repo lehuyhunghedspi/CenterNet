@@ -54,12 +54,13 @@ def demo(opt):
             img = cv2.imread(image_name)
             with open("/content/drive/My Drive/GR2/icdar_evaluate/" + re.sub(".jpg", ".txt", os.path.basename(image_name)),
                       "w") as f:
-                f.write(str(bbox[0]) + ',' + str(bbox[1]) + ',' + \
+                
+                for bbox in [ret['results'][1][i][:4] for i, value in enumerate(ret['results'][1][:, 4]) if
+                             value > 0.3]:
+                    f.write(str(bbox[0]) + ',' + str(bbox[1]) + ',' + \
                         str(bbox[2]) + ',' + str(bbox[1]) + ',' + \
                         str(bbox[2]) + ',' + str(bbox[3]) + ',' + \
                         str(bbox[0]) + ',' + str(bbox[3]) + '\n')
-                for bbox in [ret['results'][1][i][:4] for i, value in enumerate(ret['results'][1][:, 4]) if
-                             value > 0.3]:
                     cv2.rectangle(img, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (255, 0, 0), 2)
                     cv2.imwrite("/content/drive/My Drive/GR2/visualize/" + os.path.basename(image_name), img)
             time_str = ''
