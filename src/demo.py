@@ -62,7 +62,7 @@ def demo(opt):
                     y_0=min(int(bbox[1]),int(bbox[3]))
                     y_1=max(int(bbox[1]),int(bbox[3]))
                     f.write(str(x_0) + ',' + str(y_0) + ',' + \
-                            str(x_1 + ',' + str(y_0) + ',' + \
+                            str(x_1 )+ ',' + str(y_0) + ',' + \
                             str(x_1) + ',' + str(y_1) + ',' + \
                             str(x_0) + ',' + str(y_1) + '\n')
                     cv2.rectangle(img, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (255, 0, 0), 2)
