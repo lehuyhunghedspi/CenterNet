@@ -204,7 +204,7 @@ class Tree(nn.Module):
                           kernel_size=1, stride=1, bias=False),
                 nn.BatchNorm2d(out_channels, momentum=BN_MOMENTUM)
             )
-
+        self.name_in_channels=in_channels
     def forward(self, x, residual=None, children=None):
         children = [] if children is None else children
         bottom = self.downsample(x) if self.downsample else x
@@ -218,6 +218,8 @@ class Tree(nn.Module):
         else:
             children.append(x1)
             x = self.tree2(x1, children=children)
+        print("tree: ",self.name_in_channels)
+
         return x
 
 
