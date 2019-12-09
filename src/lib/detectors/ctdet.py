@@ -27,6 +27,7 @@ class CtdetDetector(BaseDetector):
   
   def process(self, images, return_time=False):
     with torch.no_grad():
+      print('=========== run process ========')
       output = self.model(images)[-1]
       hm = output['hm'].sigmoid_()
       wh = output['wh']
