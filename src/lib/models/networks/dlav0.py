@@ -206,6 +206,8 @@ class Tree(nn.Module):
         self._name_in_channels=in_channels
 
     def forward(self, x, residual=None, children=None):
+        print('==========tree :', self._name_in_channels,x.shape)
+
         children = [] if children is None else children
         bottom = self.downsample(x) if self.downsample else x
         residual = self.project(bottom) if self.project else bottom
@@ -218,7 +220,6 @@ class Tree(nn.Module):
         else:
             children.append(x1)
             x = self.tree2(x1, children=children)
-        print(self._name_in_channels,x.shape)
         return x
 
 
