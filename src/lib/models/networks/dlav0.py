@@ -167,6 +167,8 @@ class Tree(nn.Module):
                  level_root=False, root_dim=0, root_kernel_size=1,
                  dilation=1, root_residual=False):
         super(Tree, self).__init__()
+
+        #                1 ,  BasicBlock,  32 ,64,2,fALSE, fALSE
         if root_dim == 0:
             root_dim = 2 * out_channels
         if level_root:
@@ -201,6 +203,7 @@ class Tree(nn.Module):
                           kernel_size=1, stride=1, bias=False),
                 BatchNorm(out_channels)
             )
+        self._name_in_channels=in_channels
 
     def forward(self, x, residual=None, children=None):
         children = [] if children is None else children
@@ -215,6 +218,7 @@ class Tree(nn.Module):
         else:
             children.append(x1)
             x = self.tree2(x1, children=children)
+        print(self._name_in_channels,x.shape)
         return x
 
 
