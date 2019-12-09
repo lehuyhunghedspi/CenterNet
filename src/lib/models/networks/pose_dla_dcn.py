@@ -492,9 +492,10 @@ class DLASeg_BIFCN(nn.Module):
         self.first_level = int(np.log2(down_ratio))
         self.last_level = last_level
         print('================')
+        
+        self.base = globals()[base_name](pretrained=pretrained)
         print(globals()[base_name])
         exit(-1)
-        self.base = globals()[base_name](pretrained=pretrained)
         channels = self.base.channels
         scales = [2 ** i for i in range(len(channels[self.first_level:]))]
         self.dla_up = DLAUp(self.first_level, channels[self.first_level:], scales)
