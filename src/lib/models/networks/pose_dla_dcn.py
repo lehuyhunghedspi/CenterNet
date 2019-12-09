@@ -296,6 +296,8 @@ class DLA(nn.Module):
             print("forward treee:")
             x = getattr(self, 'level{}'.format(i))(x)
             y.append(x)
+            import cv2
+            cv2.waitKey(33)
         return y
 
     def load_pretrained_model(self, data='imagenet', name='dla34', hash='ba72cf86'):
