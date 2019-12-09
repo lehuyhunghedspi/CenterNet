@@ -490,7 +490,9 @@ class DLASeg(nn.Module):
         for head in self.heads:
             z[head] = self.__getattr__(head)(y[-1])
         return [z]
-    
+   
+
+from .efficientnet_pytorch import EfficientNet
 class DLASeg_BIFCN(nn.Module):
     def __init__(self, base_name, heads, pretrained, down_ratio, final_kernel,
                  last_level, head_conv, out_channel=0):
@@ -500,7 +502,11 @@ class DLASeg_BIFCN(nn.Module):
         self.last_level = last_level
         print('================')
         
-        self.base = globals()[base_name](pretrained=pretrained)
+        # self.base = globals()[base_name](pretrained=pretrained)
+        self.base = nn.Sequential(EfficientNet.from_pretrained('efficientnet-b7'),
+                                nn.Conv2d(1280, 512,
+                                        kernel_size=1, padding=1, bias=True),
+                                nn.ReLU(inplace=True))
         # print(globals()[base_name])
         # exit(-1)
         channels = self.base.channels
@@ -540,6 +546,7 @@ class DLASeg_BIFCN(nn.Module):
 
     def forward(self, x):
         x = self.base(x)
+        print("after base output====",x.shape)
         x = self.dla_up(x)
 
         y = []
