@@ -286,9 +286,11 @@ class DLA(nn.Module):
         return nn.Sequential(*modules)
 
     def forward(self, x):
+        print("===== run forward====")
         y = []
         x = self.base_layer(x)
         for i in range(6):
+            print("forward treee:")
             x = getattr(self, 'level{}'.format(i))(x)
             y.append(x)
         return y
