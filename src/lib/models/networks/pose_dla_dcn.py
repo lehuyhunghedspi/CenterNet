@@ -218,7 +218,7 @@ class Tree(nn.Module):
         else:
             children.append(x1)
             x = self.tree2(x1, children=children)
-        print("tree: ",self.name_in_channels,type(x))
+        print("tree: ",self.name_in_channels,x.shape)
 
         return x
 
