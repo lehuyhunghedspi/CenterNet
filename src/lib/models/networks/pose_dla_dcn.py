@@ -219,7 +219,7 @@ class Tree(nn.Module):
         else:
             children.append(x1)
             x = self.tree2(x1, children=children)
-        print('\t\t\t\toutput',x.shape)
+        print(' output',x.shape)
 
         return x
 
