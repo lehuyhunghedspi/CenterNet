@@ -545,8 +545,10 @@ class DLASeg_BIFCN(nn.Module):
 
     def forward(self, x):
         x = self.base(x)
-
-        print("after base output====",[a.shape for a in x])
+        print(" base output====")
+        for a in x:
+            print(a.shape)
+        print("after base output====")
         x = self.dla_up(x)
 
         y = []

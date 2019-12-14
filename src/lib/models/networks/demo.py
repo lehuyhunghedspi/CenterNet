@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 
 from efficientnet_pytorch import EfficientNet
-net = EfficientNet.from_name('efficientnet-b0')
+net = EfficientNet.from_name('efficientnet-b7')
 img_size=512
 data = torch.zeros((1, 3, img_size, img_size))
 output,temp_results = net(data)
