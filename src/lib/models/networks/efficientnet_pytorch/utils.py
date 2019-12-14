@@ -322,7 +322,7 @@ def load_pretrained_weights(model, model_name, load_fc=True):
             print(key,type(key),type(value))
             if key in fixbug:
                 state_dict_new[key]=value
-            elif key in dont_need:
+            elif 'base2.0.'+key in dont_need:
                 continue 
             else:
                 state_dict_new['base2.0.'+key]=value
