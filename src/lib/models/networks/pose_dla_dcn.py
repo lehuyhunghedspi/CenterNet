@@ -566,7 +566,7 @@ class DLASeg_BIFCN(nn.Module):
                 from torch.nn.modules.module import _addindent
                 import numpy as np
                 
-                model.load_state_dict(state_dict_new)
+                model.update(state_dict_new)
         load_efficient(self)
 
     def forward(self, x):
