@@ -309,6 +309,8 @@ def load_pretrained_weights(model, model_name, load_fc=True):
     """ Loads pretrained weights, and downloads if loading for the first time. """
     state_dict = model_zoo.load_url(url_map[model_name])
     if load_fc:
+        print("use load fc!!!!!!!")
+        print(type(state_dict))
         model.load_state_dict(state_dict)
     else:
         print("not use load fc!!!!!!!")
