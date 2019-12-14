@@ -502,7 +502,7 @@ class DLASeg_BIFCN(nn.Module):
         print('================')
         
         self.base = globals()[base_name](pretrained=pretrained)
-        self.base2 = nn.Sequential(EfficientNet.from_pretrained('efficientnet-b0'))
+        self.base2 = EfficientNet.from_pretrained('efficientnet-b0')
 
         # print(globals()[base_name])
         # exit(-1)
