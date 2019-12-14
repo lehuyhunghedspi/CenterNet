@@ -309,11 +309,15 @@ def load_pretrained_weights(model, model_name, load_fc=True):
     """ Loads pretrained weights, and downloads if loading for the first time. """
     state_dict = model_zoo.load_url(url_map[model_name])
     if load_fc:
+        from collections import OrderedDict 
+        state_dict_new = OrderedDict() 
+
         print("use load fc!!!!!!!")
         print(type(state_dict))
         for key, value in state_dict.items(): 
             print(key,type(key),type(value))
-        model.load_state_dict(state_dict)
+            state_dict_new['base2.0.'+key]=value
+        model.load_state_dict(state_dict_new)
     else:
         print("not use load fc!!!!!!!")
         state_dict.pop('_fc.weight')
