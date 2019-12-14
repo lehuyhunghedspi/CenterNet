@@ -319,11 +319,14 @@ def load_pretrained_weights(model, model_name, load_fc=True):
         print("use load fc!!!!!!!")
         print(type(state_dict))
         for key, value in state_dict.items(): 
-            print(key,type(key),type(value))
-            if key in fixbug:
-                state_dict_new[key]=value
-            elif 'base2.0.'+key in dont_need:
-                continue 
+            # print(key,type(key),type(value))
+            # if key in fixbug:
+            #     state_dict_new[key]=value
+            # elif 'base2.0.'+key in dont_need:
+            #     continue 
+            # else:
+            if key in ['_fc.weight','_fc.bias']:
+                state_dict_new['base2.0.'+key]=value
             else:
                 state_dict_new['base2.0.'+key]=value
 

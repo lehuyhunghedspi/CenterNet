@@ -502,10 +502,7 @@ class DLASeg_BIFCN(nn.Module):
         print('================')
         
         self.base = globals()[base_name](pretrained=pretrained)
-        self.base2 = nn.Sequential(EfficientNet.from_pretrained('efficientnet-b0'),
-                                nn.Conv2d(1280, 512,
-                                        kernel_size=1, padding=1, bias=True),
-                                nn.ReLU(inplace=True))
+        self.base2 = nn.Sequential(EfficientNet.from_pretrained('efficientnet-b0'))
 
         # print(globals()[base_name])
         # exit(-1)
