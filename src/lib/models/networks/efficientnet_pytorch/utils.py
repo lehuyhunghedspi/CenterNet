@@ -330,7 +330,7 @@ def load_pretrained_weights(model, model_name, load_fc=True):
             else:
                 state_dict_new['base2.0.'+key]=value
 
-        model.load_state_dict(state_dict_new)
+        model.load_state_dict(state_dict)
     else:
         print("not use load fc!!!!!!!")
         state_dict.pop('_fc.weight')
