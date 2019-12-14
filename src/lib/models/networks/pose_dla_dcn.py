@@ -567,7 +567,7 @@ class DLASeg_BIFCN(nn.Module):
                 import numpy as np
                 
                 model.update(state_dict_new)
-        load_efficient(self)
+        load_efficient(self.base2)
 
     def forward(self, x):
         print("===========forward ========")
