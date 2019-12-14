@@ -358,8 +358,8 @@ def load_pretrained_weights(model, model_name, load_fc=True):
 
             tmpstr = tmpstr + ')'
             return tmpstr
-        print(torch_summarize(model))
-        model.load_state_dict(state_dict)
+        # print(torch_summarize(model))
+        model.load_state_dict(OrderedDict() )
     else:
         print("not use load fc!!!!!!!")
         state_dict.pop('_fc.weight')
