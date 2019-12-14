@@ -502,10 +502,10 @@ class DLASeg_BIFCN(nn.Module):
         print('================')
         
         self.base = globals()[base_name](pretrained=pretrained)
-        # self.base = nn.Sequential(EfficientNet.from_pretrained('efficientnet-b7'),
-        #                         nn.Conv2d(1280, 512,
-        #                                 kernel_size=1, padding=1, bias=True),
-        #                         nn.ReLU(inplace=True))
+        self.base2 = nn.Sequential(EfficientNet.from_pretrained('efficientnet-b5'),
+                                nn.Conv2d(1280, 512,
+                                        kernel_size=1, padding=1, bias=True),
+                                nn.ReLU(inplace=True))
         # print(globals()[base_name])
         # exit(-1)
         channels = self.base.channels
@@ -544,6 +544,7 @@ class DLASeg_BIFCN(nn.Module):
             self.__setattr__(head, fc)
 
     def forward(self, x):
+        x_base2=self.base2(x)
         x = self.base(x)
         print(" base output====")
         for a in x:
