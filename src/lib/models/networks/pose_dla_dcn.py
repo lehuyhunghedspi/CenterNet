@@ -13,7 +13,7 @@ from torch import nn
 import torch.nn.functional as F
 import torch.utils.model_zoo as model_zoo
 
-
+from .DCNv2.dcn_v2 import DCN
 
 BN_MOMENTUM = 0.1
 logger = logging.getLogger(__name__)
@@ -502,11 +502,11 @@ class DLASeg_BIFCN(nn.Module):
         print('================')
         
         self.base = globals()[base_name](pretrained=pretrained)
-        self.base2 = nn.Sequential(EfficientNet.from_pretrained('efficientnet-b4'),
+        self.base2 = nn.Sequential(EfficientNet.from_pretrained('efficientnet-b'),
                                 nn.Conv2d(1280, 512,
                                         kernel_size=1, padding=1, bias=True),
                                 nn.ReLU(inplace=True))
-        
+
         # print(globals()[base_name])
         # exit(-1)
         channels = self.base.channels
