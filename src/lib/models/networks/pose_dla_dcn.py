@@ -544,6 +544,7 @@ class DLASeg_BIFCN(nn.Module):
             self.__setattr__(head, fc)
 
     def forward(self, x):
+        print("===========forward ========")
         return x
         exit(-1)
         # x_base2=self.base2(x)
