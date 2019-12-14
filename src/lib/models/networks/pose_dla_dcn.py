@@ -506,7 +506,7 @@ class DLASeg_BIFCN(nn.Module):
                                 nn.Conv2d(1280, 512,
                                         kernel_size=1, padding=1, bias=True),
                                 nn.ReLU(inplace=True))
-        exit(0)
+        
         # print(globals()[base_name])
         # exit(-1)
         channels = self.base.channels
