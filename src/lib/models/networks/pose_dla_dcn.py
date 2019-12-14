@@ -521,9 +521,9 @@ class DLASeg_BIFCN(nn.Module):
                     #     continue 
                     # else:
                     if key in ['_fc.weight','_fc.bias']:
-                        state_dict_new['base2.0.'+key]=value
+                        state_dict_new['base2.'+key]=value
                     else:
-                        state_dict_new['base2.0.'+key]=value
+                        state_dict_new['base2.'+key]=value
                 from torchsummary import summary
                 from torch.nn.modules.module import _addindent
                 import numpy as np
