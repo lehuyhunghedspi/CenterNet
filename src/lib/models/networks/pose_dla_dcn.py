@@ -503,6 +503,7 @@ class DLASeg_BIFCN(nn.Module):
         
         self.base = globals()[base_name](pretrained=pretrained)
         self.base2 = EfficientNet.from_pretrained('efficientnet-b0')
+        from .efficientnet_pytorch.utils import url_map
         def load_efficient(model,model_name='efficientnet-b0',load_fc=True):
 
             state_dict = model_zoo.load_url(url_map[model_name])
