@@ -545,6 +545,7 @@ class DLASeg_BIFCN(nn.Module):
 
     def forward(self, x):
         # x_base2=self.base2(x)
+        x_base2=self.base2(x)
         x = self.base(x)
 
         print(type(x_base2))
