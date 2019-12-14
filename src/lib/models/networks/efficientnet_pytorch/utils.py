@@ -312,7 +312,7 @@ def load_pretrained_weights(model, model_name, load_fc=True):
         print("use load fc!!!!!!!")
         print(type(state_dict))
         for key, value in state_dict.items(): 
-            print(key,type(value))
+            print(key,type(key),type(value))
         model.load_state_dict(state_dict)
     else:
         print("not use load fc!!!!!!!")
