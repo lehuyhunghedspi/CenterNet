@@ -330,7 +330,7 @@ def load_pretrained_weights(model, model_name, load_fc=True):
             else:
                 state_dict_new['base2.0.'+key]=value
         from torchsummary import summary
-        print(torch_summarize(model))
+        print(summary(model))
         model.load_state_dict(state_dict)
     else:
         print("not use load fc!!!!!!!")
