@@ -504,32 +504,7 @@ class DLASeg_BIFCN(nn.Module):
         self.base = globals()[base_name](pretrained=pretrained)
         self.base2 = EfficientNet.from_pretrained('efficientnet-b0')
         from .efficientnet_pytorch.utils import url_map
-        def load_efficient(model,model_name='efficientnet-b0',load_fc=True):
-
-            state_dict = model_zoo.load_url(url_map[model_name])
-            if load_fc:
-                from collections import OrderedDict 
-                state_dict_new = OrderedDict() 
-
-                print("use load fc!!!!!!!")
-                print(type(state_dict))
-                for key, value in state_dict.items(): 
-                    # print(key,type(key),type(value))
-                    # if key in fixbug:
-                    #     state_dict_new[key]=value
-                    # elif 'base2.0.'+key in dont_need:
-                    #     continue 
-                    # else:
-                    if key in ['_fc.weight','_fc.bias']:
-                        state_dict_new['base2.'+key]=value
-                    else:
-                        state_dict_new['base2.'+key]=value
-                from torchsummary import summary
-                from torch.nn.modules.module import _addindent
-                import numpy as np
-                
-                model.load_state_dict(state_dict_new)
-        load_efficient(self.base2)
+        
         # print(globals()[base_name])
         # exit(-1)
         channels = self.base.channels
@@ -566,6 +541,33 @@ class DLASeg_BIFCN(nn.Module):
               else:
                 fill_fc_weights(fc)
             self.__setattr__(head, fc)
+
+        def load_efficient(model,model_name='efficientnet-b0',load_fc=True):
+
+            state_dict = model_zoo.load_url(url_map[model_name])
+            if load_fc:
+                from collections import OrderedDict 
+                state_dict_new = OrderedDict() 
+
+                print("use load fc!!!!!!!")
+                print(type(state_dict))
+                for key, value in state_dict.items(): 
+                    # print(key,type(key),type(value))
+                    # if key in fixbug:
+                    #     state_dict_new[key]=value
+                    # elif 'base2.0.'+key in dont_need:
+                    #     continue 
+                    # else:
+                    if key in ['_fc.weight','_fc.bias']:
+                        state_dict_new['base2.'+key]=value
+                    else:
+                        state_dict_new['base2.'+key]=value
+                from torchsummary import summary
+                from torch.nn.modules.module import _addindent
+                import numpy as np
+                
+                model.load_state_dict(state_dict_new)
+        load_efficient(self.base2)
 
     def forward(self, x):
         print("===========forward ========")
