@@ -330,6 +330,8 @@ def load_pretrained_weights(model, model_name, load_fc=True):
             else:
                 state_dict_new['base2.0.'+key]=value
         from torchsummary import summary
+        from torch.nn.modules.module import _addindent
+        import numpy as np
         def torch_summarize(model, show_weights=True, show_parameters=True):
             """Summarizes torch model by showing trainable parameters and weights."""
             tmpstr = model.__class__.__name__ + ' (\n'
