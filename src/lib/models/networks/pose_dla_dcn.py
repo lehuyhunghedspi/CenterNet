@@ -546,7 +546,7 @@ class DLASeg_BIFCN(nn.Module):
     def forward(self, x):
         exit(-1)
         # x_base2=self.base2(x)
-        x_base2=self.base2(x)
+        # x_base2=self.base2(x)
         print(type(x_base2))
         x = self.base(x)
 
