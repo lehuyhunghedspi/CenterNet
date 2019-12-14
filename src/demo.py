@@ -71,6 +71,7 @@ def demo(opt):
             for stat in time_stats:
                 time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
             # print(time_str)
+            break
 
 
 if __name__ == '__main__':
