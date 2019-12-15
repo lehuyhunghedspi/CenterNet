@@ -551,6 +551,7 @@ class DLASeg_BIFCN(nn.Module):
 
 
     def forward(self, x):
+        print(x.shape)
         print("===========forward ========")
 
         # return x
