@@ -559,6 +559,9 @@ class DLASeg_BIFCN(nn.Module):
         x = self.dla_up(x)
         for layer in x_base2[1]:
             print(layer.shape)
+        print('======')
+        for layer in x:
+            print(layer.shape)
         print(type(x))
         1/0
 
