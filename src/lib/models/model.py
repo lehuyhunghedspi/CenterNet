@@ -73,16 +73,16 @@ def load_model(model, model_path, optimizer=None, resume=False,
 
           print("use load fc========")
           for key, value in state_dict_base.items(): 
-              print(key)
+              print('base2.'+key)
               state_dict['base2.'+key].copy_(value)
 
-          
+    return state_dict
         
   # print(state_dict)
   for key in state_dict:
     print(key)
     break
-  update_state_dict(state_dict)
+  state_dict=update_state_dict(state_dict)
   model.load_state_dict(state_dict, strict=False)
 
   # resume optimizer parameters
