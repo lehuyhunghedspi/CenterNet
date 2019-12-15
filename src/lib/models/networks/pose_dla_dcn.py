@@ -502,7 +502,7 @@ class DLASeg_BIFCN(nn.Module):
         print('================')
         
         self.base = globals()[base_name](pretrained=pretrained)
-        self.base2 = EfficientNet.from_pretrained('efficientnet-b0')
+        self.base2 = EfficientNet.from_pretrained('efficientnet-b4')
         
         
         # print(globals()[base_name])
@@ -542,7 +542,7 @@ class DLASeg_BIFCN(nn.Module):
                 fill_fc_weights(fc)
             self.__setattr__(head, fc)
 
-       
+
     def forward(self, x):
         print("===========forward ========")
         return x
