@@ -508,7 +508,7 @@ class DLASeg_BIFCN(nn.Module):
         # print(globals()[base_name])
         # exit(-1)
         print(self.base.channels,'self.base.channels')
-        channels = self.base.channels
+        channels = [16, 32, 64, 128, 256, 512]
         scales = [2 ** i for i in range(len(channels[self.first_level:]))]
         self.dla_up = DLAUp(self.first_level, channels[self.first_level:], scales)
 
