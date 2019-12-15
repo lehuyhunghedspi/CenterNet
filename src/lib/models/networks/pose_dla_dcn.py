@@ -554,6 +554,7 @@ class DLASeg_BIFCN(nn.Module):
 
         x = self.base(x)
         print(len(x),len(x_base2[1]))
+        print(x[0].shape,x[1].shape,x[2].shape,x[3].shape,x[4].shape,x[5].shape)
         1/0
 
         
