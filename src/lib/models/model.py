@@ -64,7 +64,7 @@ def load_model(model, model_path, optimizer=None, resume=False,
       state_dict[k] = model_state_dict[k]
   from .networks.efficientnet_pytorch.utils import url_map
   from torch.utils import model_zoo
-  def update_state_dict(state_dict,load_fc=True):
+  def update_state_dict(state_dict,model_name='efficientnet-b4',load_fc=True):
 
     state_dict_base = model_zoo.load_url(url_map[model_name])
     if load_fc:
