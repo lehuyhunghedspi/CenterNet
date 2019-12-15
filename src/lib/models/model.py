@@ -78,6 +78,9 @@ def load_model(model, model_path, optimizer=None, resume=False,
           
         
   # print(state_dict)
+  for key in state_dict:
+    print(key)
+    break
   update_state_dict(state_dict)
   model.load_state_dict(state_dict, strict=False)
 
