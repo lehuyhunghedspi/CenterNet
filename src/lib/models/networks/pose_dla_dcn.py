@@ -572,10 +572,10 @@ class DLASeg_BIFCN(nn.Module):
         print('======')
 
         x = self.dla_up(base2_output_adjust)
-        for layer in x:
-            print(layer.shape)
-        print(type(x))
-        1/0
+        # for layer in x:
+        #     print(layer.shape)
+        # print(type(x))
+        # 1/0
 
         
         
