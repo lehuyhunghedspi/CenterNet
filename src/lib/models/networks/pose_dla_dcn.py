@@ -550,9 +550,11 @@ class DLASeg_BIFCN(nn.Module):
         # exit(-1)
         x_base2=self.base2(x)
         # x_base2=self.base2(x)
-        print(type(x_base2))
-        1/0
+        # print(type())
+
         x = self.base(x)
+        print(len(x),len(x_base2))
+        1/0
 
         
         
