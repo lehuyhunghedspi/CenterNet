@@ -73,6 +73,7 @@ def load_model(model, model_path, optimizer=None, resume=False,
 
           print("use load fc========")
           for key, value in state_dict_base.items(): 
+              print(key)
               state_dict['base2.'+key].copy_(value)
 
           
