@@ -72,9 +72,10 @@ def load_model(model, model_path, optimizer=None, resume=False,
           state_dict_new = OrderedDict() 
 
           print("use load fc========")
-          for key, value in state_dict_base.items(): 
-              print('base2.'+key)
-              state_dict['base2.'+key].copy_(value)
+          # for key, value in state_dict_base.items(): 
+          #     print('base2.'+key)
+          #     if 
+          #     state_dict['base2.'+key].copy_(value)
 
     return state_dict
         
