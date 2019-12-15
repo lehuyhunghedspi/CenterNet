@@ -71,7 +71,7 @@ def load_model(model, model_path, optimizer=None, resume=False,
           from collections import OrderedDict 
           state_dict_new = OrderedDict() 
 
-          print("use load fc!!!!!!!")
+          print("use load fc========")
           for key, value in state_dict_base.items(): 
               if key in ['_fc.weight','_fc.bias']:
                   state_dict_new['base.'+key]=value
