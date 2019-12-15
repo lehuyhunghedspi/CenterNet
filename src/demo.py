@@ -52,7 +52,7 @@ def demo(opt):
         for (image_name) in image_names:
             ret = detector.run(image_name)
             img = cv2.imread(image_name)
-            with open("/content/drive/My Drive/GR2/icdar_evaluate/" + re.sub(".jpg", ".txt", os.path.basename(image_name)),
+            with open("/content/drive/My Drive/GR2/center_efficient/icdar_evaluate/" + re.sub(".jpg", ".txt", os.path.basename(image_name)),
                       "w") as f:
                 
                 for bbox in [ret['results'][1][i][:4] for i, value in enumerate(ret['results'][1][:, 4]) if
@@ -66,7 +66,7 @@ def demo(opt):
                             str(x_1) + ',' + str(y_1) + ',' + \
                             str(x_0) + ',' + str(y_1) + '\n')
                     cv2.rectangle(img, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (255, 0, 0), 2)
-                    cv2.imwrite("/content/drive/My Drive/GR2/visualize/" + os.path.basename(image_name), img)
+                    cv2.imwrite("/content/drive/My Drive/GR2/center_efficient/visualize/" + os.path.basename(image_name), img)
             time_str = ''
             for stat in time_stats:
                 time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
