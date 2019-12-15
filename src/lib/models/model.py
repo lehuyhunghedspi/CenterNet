@@ -62,6 +62,26 @@ def load_model(model, model_path, optimizer=None, resume=False,
     if not (k in state_dict):
       print('No param {}.'.format(k) + msg)
       state_dict[k] = model_state_dict[k]
+  from .networks.efficientnet_pytorch.utils import url_map
+  from torch.utils import model_zoo
+  def update_state_dict(state_dict,load_fc=True):
+
+    state_dict_base = model_zoo.load_url(url_map[model_name])
+    if load_fc:
+          from collections import OrderedDict 
+          state_dict_new = OrderedDict() 
+
+          print("use load fc!!!!!!!")
+          for key, value in state_dict_base.items(): 
+              if key in ['_fc.weight','_fc.bias']:
+                  state_dict_new['base.'+key]=value
+              else:
+                  state_dict_new['base.'+key]=value
+
+          
+        
+  print(state_dict.keys())
+  update_state_dict(state_dict)
   model.load_state_dict(state_dict, strict=False)
 
   # resume optimizer parameters
