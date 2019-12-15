@@ -551,8 +551,8 @@ class DLASeg_BIFCN(nn.Module):
 
 
     def forward(self, x):
-        print('batch size',x.shape)
-        print("===========forward ========")
+        # print('batch size',x.shape)
+        # print("===========forward ========")
 
         # return x
         # exit(-1)
