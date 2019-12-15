@@ -543,7 +543,7 @@ class DLASeg_BIFCN(nn.Module):
             self.__setattr__(head, fc)
 
 
-        self.adjust_conv1_1=[Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)) for _ in range(5)]
+        self.adjust_conv1_1=[nn.Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)) for _ in range(5)]
 
 
 
