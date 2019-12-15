@@ -556,18 +556,16 @@ class DLASeg_BIFCN(nn.Module):
         print(len(x),len(x_base2[1]))
         print(x[0].shape,x[1].shape,x[2].shape,x[3].shape,x[4].shape,x[5].shape)
         
-        
+        x = self.dla_up(x)
         for layer in x_base2[1]:
             print(layer.shape)
+        print(type(x))
         1/0
 
         
         
-        print(" base output====")
-        for a in x:
-            print(a.shape)
-        print("after base output====")
-        x = self.dla_up(x)
+        
+        
 
         y = []
         for i in range(self.last_level - self.first_level):
