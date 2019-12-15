@@ -563,12 +563,15 @@ class DLASeg_BIFCN(nn.Module):
         print(len(x),len(x_base2[1]))
         print(x[0].shape,x[1].shape,x[2].shape,x[3].shape,x[4].shape,x[5].shape)
         
-        x = self.dla_up(x)
+        base2_output_adjust=[]
         for layer_i,layer in enumerate([input_x]+x_base2[1]):
             print(self.adjust_conv1_1[layer_i])
             print(layer_i,layer.shape)
-            print(self.adjust_conv1_1[layer_i](layer).shape)
+            
+            base2_output_adjust.append(self.adjust_conv1_1[layer_i](layer))
         print('======')
+
+        x = self.dla_up(base2_output_adjust)
         for layer in x:
             print(layer.shape)
         print(type(x))
