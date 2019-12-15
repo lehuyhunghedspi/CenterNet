@@ -174,7 +174,7 @@ class EfficientNet(nn.Module):
         # Stem
         x = self._swish(self._bn0(self._conv_stem(inputs)))
 
-
+        print(x.shape,'#####')
         temp_results=[]
         # Blocks
         for idx, block in enumerate(self._blocks):
