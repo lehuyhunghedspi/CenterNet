@@ -563,7 +563,7 @@ class DLASeg_BIFCN(nn.Module):
         print(x[0].shape,x[1].shape,x[2].shape,x[3].shape,x[4].shape,x[5].shape)
         
         x = self.dla_up(x)
-        for layer_i,layer in enumerate(input_x+x_base2[1]):
+        for layer_i,layer in enumerate([input_x]+x_base2[1]):
             print(layer_i,layer.shape)
         print('======')
         for layer in x:
