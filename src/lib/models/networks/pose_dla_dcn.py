@@ -564,7 +564,9 @@ class DLASeg_BIFCN(nn.Module):
         
         x = self.dla_up(x)
         for layer_i,layer in enumerate([input_x]+x_base2[1]):
+            print(self.adjust_conv1_1[layer_i])
             print(layer_i,layer.shape)
+            print(self.adjust_conv1_1[layer_i](layer).shape)
         print('======')
         for layer in x:
             print(layer.shape)
