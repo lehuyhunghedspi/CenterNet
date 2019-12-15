@@ -543,6 +543,10 @@ class DLASeg_BIFCN(nn.Module):
             self.__setattr__(head, fc)
 
 
+        self.adjust_conv1_1=[Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)) for _ in range(5)]
+
+
+
     def forward(self, x):
         print("===========forward ========")
 
@@ -557,8 +561,8 @@ class DLASeg_BIFCN(nn.Module):
         print(x[0].shape,x[1].shape,x[2].shape,x[3].shape,x[4].shape,x[5].shape)
         
         x = self.dla_up(x)
-        for layer in x_base2[1]:
-            print(layer.shape)
+        for layer_i,layer in enumerate(x_base2[1]):
+            print(layer_i,layer.shape)
         print('======')
         for layer in x:
             print(layer.shape)
