@@ -501,12 +501,13 @@ class DLASeg_BIFCN(nn.Module):
         self.last_level = last_level
         print('================')
         
-        # self.base = globals()[base_name](pretrained=pretrained)
+        self.base = globals()[base_name](pretrained=pretrained)
         self.base2 = EfficientNet.from_pretrained('efficientnet-b4')
         
         
         # print(globals()[base_name])
         # exit(-1)
+        print(self.base.channels,'self.base.channels')
         channels = self.base.channels
         scales = [2 ** i for i in range(len(channels[self.first_level:]))]
         self.dla_up = DLAUp(self.first_level, channels[self.first_level:], scales)
