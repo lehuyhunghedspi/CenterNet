@@ -501,7 +501,7 @@ class DLASeg_BIFCN(nn.Module):
         self.last_level = last_level
         print('================')
         
-        self.base = globals()[base_name](pretrained=pretrained)
+        # self.base = globals()[base_name](pretrained=pretrained)
         self.base2 = EfficientNet.from_pretrained('efficientnet-b4')
         
         
