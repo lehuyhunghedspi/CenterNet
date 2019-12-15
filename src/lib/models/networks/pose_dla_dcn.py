@@ -542,7 +542,7 @@ class DLASeg_BIFCN(nn.Module):
                 fill_fc_weights(fc)
             self.__setattr__(head, fc)
 
-        evice = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         self.adjust_conv1_1=[nn.Conv2d(in_layer_count, out_layer_count, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), device=device) for (in_layer_count,out_layer_count) in [(3,16),(24,32),(32,64),(54,128),(160,256),(448,512)]]
 
