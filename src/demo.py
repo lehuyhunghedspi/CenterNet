@@ -66,7 +66,8 @@ def demo(opt):
                             str(x_1) + ',' + str(y_1) + ',' + \
                             str(x_0) + ',' + str(y_1) + '\n')
                     cv2.rectangle(img, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (255, 0, 0), 2)
-                    cv2.imwrite("/content/drive/My Drive/GR2/center_efficient/visualize/" + os.path.basename(image_name), img)
+                print('dump image',"/content/drive/My Drive/GR2/center_efficient/visualize/" + os.path.basename(image_name)) 
+                cv2.imwrite("/content/drive/My Drive/GR2/center_efficient/visualize/" + os.path.basename(image_name), img)
             time_str = ''
             for stat in time_stats:
                 time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
