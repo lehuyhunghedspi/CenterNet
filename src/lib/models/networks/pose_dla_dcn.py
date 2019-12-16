@@ -573,7 +573,7 @@ class DLASeg_BIFCN(nn.Module):
             base2_output_adjust.append(self.adjust_conv1_1[layer_i](layer))
         # print('======')
 
-        x = self.dla_up(base2_output_adjust)
+        x = self.dla_up([input_x,x_base2])
         # for layer in x:
         #     print(layer.shape)
         # print(type(x))
