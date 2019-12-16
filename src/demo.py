@@ -56,7 +56,7 @@ def demo(opt):
                       "w") as f:
                 
                 for bbox in [ret['results'][1][i][:4] for i, value in enumerate(ret['results'][1][:, 4]) if
-                             value > 0.3]:
+                             value > 0.01]:
                     x_0=min(int(bbox[0]),int(bbox[2]))
                     x_1=max(int(bbox[0]),int(bbox[2]))
                     y_0=min(int(bbox[1]),int(bbox[3]))
